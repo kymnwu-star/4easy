@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fffaf0">
+  <title>포이지 4easy</title>
+  <link rel="preconnect" href="https://hangeul.pstatic.net" crossorigin>
+  <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <h1 class="logo">4easy</h1>
+      <button type="button" class="settings-btn" id="open-settings" aria-label="연락처 설정 열기" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <div class="grid">
+        <button type="button" class="card card-call" data-action="call" aria-label="가족 전화">가족 전화</button>
+        <button type="button" class="card card-hospital" data-action="hospital" aria-label="병원 가기">병원 가기</button>
+        <button type="button" class="card card-youtube" data-action="youtube" aria-label="이동하기">이동하기</button>
+        <button type="button" class="card card-welfare" data-action="welfare" aria-label="복지정보">복지정보</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- 설정 창 -->
+  <dialog id="settings" class="dialog" aria-labelledby="settings-title" aria-describedby="settings-desc">
+    <form id="settings-form" method="dialog" novalidate>
+      <h2 id="settings-title">연락처 설정</h2>
+      <p id="settings-desc">각 버튼을 눌렀을 때 전화할 번호를 입력해 주세요.</p>
+
+      <div class="field">
+        <label for="phone-call">가족 전화</label>
+        <input type="tel" inputmode="tel" id="phone-call" name="call" placeholder="010-1234-5678" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="phone-hospital">병원 가기</label>
+        <input type="tel" inputmode="tel" id="phone-hospital" name="hospital" placeholder="02-123-4567" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="phone-youtube">이동하기</label>
+        <input type="tel" inputmode="tel" id="phone-youtube" name="youtube" placeholder="010-1234-5678" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="phone-welfare">복지정보</label>
+        <input type="tel" inputmode="tel" id="phone-welfare" name="welfare" placeholder="02-123-4567" autocomplete="off">
+      </div>
+
+      <fieldset class="options">
+        <legend>화면 설정</legend>
+        <label class="check"><input type="checkbox" id="opt-large"><span>글자를 더 크게</span></label>
+        <label class="check"><input type="checkbox" id="opt-contrast"><span>색을 더 진하게</span></label>
+      </fieldset>
+
+      <button type="submit" class="save-btn" id="save-btn">저장하고 닫기</button>
+    </form>
+  </dialog>
+
+  <!-- 안내 메시지 -->
+  <dialog id="notice" class="dialog notice" role="alertdialog" aria-labelledby="notice-text">
+    <p id="notice-text"></p>
+    <div class="notice-actions">
+      <button type="button" class="save-btn" id="notice-settings">연락처 설정하기</button>
+      <button type="button" class="ghost-btn" id="notice-close">닫기</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
