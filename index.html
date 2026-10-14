@@ -25,7 +25,7 @@
       <div class="grid">
         <button type="button" class="card card-call" data-action="call" aria-label="가족 전화">가족 전화</button>
         <button type="button" class="card card-hospital" data-action="hospital" aria-label="병원 가기">병원 가기</button>
-        <button type="button" class="card card-youtube" data-action="youtube" aria-label="이동하기">이동하기</button>
+        <button type="button" class="card card-youtube" data-action="taxi" aria-label="이동하기, 카카오택시 부르기">이동하기</button>
         <button type="button" class="card card-welfare" data-action="welfare" aria-label="복지정보">복지정보</button>
       </div>
     </main>
@@ -35,24 +35,47 @@
   <dialog id="settings" class="dialog" aria-labelledby="settings-title" aria-describedby="settings-desc">
     <form id="settings-form" method="dialog" novalidate>
       <h2 id="settings-title">연락처 설정</h2>
-      <p id="settings-desc">각 버튼을 눌렀을 때 전화할 번호를 입력해 주세요.</p>
+      <p id="settings-desc">각 버튼을 눌렀을 때 연결할 곳을 입력해 주세요.</p>
 
-      <div class="field">
-        <label for="phone-call">가족 전화</label>
-        <input type="tel" inputmode="tel" id="phone-call" name="call" placeholder="010-1234-5678" autocomplete="off">
-      </div>
-      <div class="field">
-        <label for="phone-hospital">병원 가기</label>
-        <input type="tel" inputmode="tel" id="phone-hospital" name="hospital" placeholder="02-123-4567" autocomplete="off">
-      </div>
-      <div class="field">
-        <label for="phone-youtube">이동하기</label>
-        <input type="tel" inputmode="tel" id="phone-youtube" name="youtube" placeholder="010-1234-5678" autocomplete="off">
-      </div>
-      <div class="field">
-        <label for="phone-welfare">복지정보</label>
-        <input type="tel" inputmode="tel" id="phone-welfare" name="welfare" placeholder="02-123-4567" autocomplete="off">
-      </div>
+      <fieldset class="group">
+        <legend>가족 전화</legend>
+        <p class="hint">누르면 아래 번호로 바로 전화합니다.</p>
+        <div class="field">
+          <label for="phone-call">전화번호</label>
+          <input type="tel" inputmode="tel" id="phone-call" name="call" placeholder="010-1234-5678" autocomplete="off">
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>병원 가기</legend>
+        <p class="hint">누르면 「병원에 전화하기」와 「길찾기」 중에서 고릅니다.</p>
+        <div class="field">
+          <label for="phone-hospital">병원 전화번호</label>
+          <input type="tel" inputmode="tel" id="phone-hospital" name="hospital" placeholder="02-123-4567" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="place-hospital">병원 이름 또는 주소 (카카오맵 길찾기)</label>
+          <input type="text" id="place-hospital" name="place-hospital" placeholder="예: 서울대병원" autocomplete="off">
+        </div>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>이동하기</legend>
+        <p class="hint">누르면 카카오택시(카카오 T) 앱이 열립니다. 따로 설정할 것은 없어요.</p>
+      </fieldset>
+
+      <fieldset class="group">
+        <legend>복지정보</legend>
+        <p class="hint">누르면 「복지관에 전화하기」와 「길찾기」 중에서 고릅니다.</p>
+        <div class="field">
+          <label for="phone-welfare">복지관 전화번호</label>
+          <input type="tel" inputmode="tel" id="phone-welfare" name="welfare" placeholder="02-123-4567" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="place-welfare">복지관 이름 또는 주소 (카카오맵 길찾기)</label>
+          <input type="text" id="place-welfare" name="place-welfare" placeholder="예: 강남종합사회복지관" autocomplete="off">
+        </div>
+      </fieldset>
 
       <fieldset class="options">
         <legend>화면 설정</legend>
@@ -71,6 +94,14 @@
       <button type="button" class="save-btn" id="notice-settings">연락처 설정하기</button>
       <button type="button" class="ghost-btn" id="notice-close">닫기</button>
     </div>
+  </dialog>
+
+  <!-- 선택 창 (병원 가기 / 복지정보) -->
+  <dialog id="choice" class="dialog choice" aria-labelledby="choice-title">
+    <h2 id="choice-title"></h2>
+    <button type="button" class="save-btn choice-btn" id="choice-call"></button>
+    <button type="button" class="save-btn choice-btn map" id="choice-map">길찾기 (카카오맵)</button>
+    <button type="button" class="ghost-btn" id="choice-close">닫기</button>
   </dialog>
 
   <script src="app.js"></script>
